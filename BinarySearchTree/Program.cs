@@ -17,7 +17,6 @@ namespace BinarySearchTree
             for(int i = 0; i < 50; i++)
             {
                 int random = ran.Next(100);
-                Console.WriteLine(random + " added");
                 binaryTree.AddLeaf(random);
             }
 

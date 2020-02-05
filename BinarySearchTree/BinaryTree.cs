@@ -36,6 +36,8 @@ namespace BinarySearchTree
 
                     current.childR = newLeaf;
                     current = start;
+
+                    Console.WriteLine(input + " added");
                 }
                 else
                 {
@@ -43,7 +45,7 @@ namespace BinarySearchTree
                     AddLeaf(input);
                 }
             }
-            else
+            else if(current.data.CompareTo(input) == 1)
             {
                 if (current.childL == null)
                 {
@@ -51,12 +53,17 @@ namespace BinarySearchTree
 
                     current.childL = newLeaf;
                     current = start;
+                    Console.WriteLine(input + " added");
                 }
                 else
                 {
                     current = current.childL;
                     AddLeaf(input);
                 }
+            }
+            else
+            {
+                current = start;
             }
         }
 
