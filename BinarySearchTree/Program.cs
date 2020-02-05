@@ -12,25 +12,25 @@ namespace BinarySearchTree
         {
 
             BinaryTree<int> binaryTree = new BinaryTree<int>();
+            Random ran = new Random();
 
-            binaryTree.AddLeaf(10);
-            binaryTree.AddLeaf(5);
-            binaryTree.AddLeaf(6);
-            binaryTree.AddLeaf(7);
-            binaryTree.AddLeaf(11);
-            binaryTree.AddLeaf(19);
-            binaryTree.AddLeaf(13);
-            binaryTree.AddLeaf(4);
+            for(int i = 0; i < 50; i++)
+            {
+                int random = ran.Next(100);
+                Console.WriteLine(random + " added");
+                binaryTree.AddLeaf(random);
+            }
 
-            Leaf<int> found = binaryTree.Search(14);
+            int search = ran.Next(100);
+            Leaf<int> found = binaryTree.Search(search);
 
             if(found != null)
             {
-                Console.WriteLine("Value found");
+                Console.WriteLine(search + " found");
             }
             else
             {
-                Console.WriteLine("Value not found");
+                Console.WriteLine(search + " not found");
             }
 
             Console.ReadLine();

@@ -26,6 +26,7 @@ namespace BinarySearchTree
                 Leaf<T> newLeaf = new Leaf<T>(input);
                 start = newLeaf;
                 current = newLeaf;
+                return;
             }
             if (current.data.CompareTo(input) == -1)
             {
@@ -34,6 +35,7 @@ namespace BinarySearchTree
                     Leaf<T> newLeaf = new Leaf<T>(input);
 
                     current.childR = newLeaf;
+                    current = start;
                 }
                 else
                 {
@@ -47,7 +49,8 @@ namespace BinarySearchTree
                 {
                     Leaf<T> newLeaf = new Leaf<T>(input);
 
-                    current.childR = newLeaf;
+                    current.childL = newLeaf;
+                    current = start;
                 }
                 else
                 {
@@ -59,10 +62,12 @@ namespace BinarySearchTree
 
         public Leaf<T> Search(T input)
         {
-
             if (start == null)
             {
-                return null;
+                Leaf<T> output = current;
+
+                current = start;
+                return output;
             }
 
             if (current.data.CompareTo(input) == 0)
@@ -73,18 +78,18 @@ namespace BinarySearchTree
             {
                 if (current.data.CompareTo(input) == -1)
                 {
-                    if (current.childL != null)
+                    if (current.childR != null)
                     {
-                        current = current.childL;
-                        Search(input);
+                        current = current.childR;
+                        return Search(input);
                     }
                 }
                 else if (current.data.CompareTo(input) == 1)
                 {
-                    if (current.childR != null)
+                    if (current.childL != null)
                     {
-                        current = current.childR;
-                        Search(input);
+                        current = current.childL;
+                        return Search(input);
                     }
                 }
 
